@@ -70,3 +70,5 @@ sudo systemctl start eduubot
 ## Credit
 
 This source-code is fully based on [AmanoTeam's](https://github.com/AmanoTeam/EduuRobot) repo and fully re-edited by me for personal use, and for another else want to use this source-code so thanks to them.
+
+Thanks to [VysakhTG](https://github.com/VysakhTG) for his Contribution on making clone feature.
