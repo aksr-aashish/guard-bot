@@ -3,11 +3,12 @@ import os.path
 from typing import List, Optional
 
 
-API_ID: int = insert_your_own_api_id_here
-API_HASH: str = "insert_your_own_api_hash_here"
-TOKEN: str = "insert_your_bot_token_here"
+API_ID: int = 2984107
+API_HASH: str = "4ce83ad7d954da391c659c6d7d76e0ce"
+TOKEN: str = "6069510582:AAE9rXONh8q0Zsf0Ixv-Uwl4J7NieALyCLM"
 
-log_chat: int = insert_log_chat_id_here
+log_chat: int = -1001980257560
+sudoers: List[int] = [1757169682, 859229457]
 super_sudoers: List[int] = [1757169682, 859229457]
 
 prefix: List[str] = ["/", "!", ".", "$", "-"]
@@ -20,7 +21,7 @@ DATABASE_PATH = os.path.join("eduu", "database", "eduu.db")
 
 TENOR_API_KEY: Optional[str] = "X9HD35B7ZGP6"
 
-sudoers: List[int] = [1757169682, 859229457, *super_sudoers]
+sudoers.extend(super_sudoers)
 
 # notes
 
