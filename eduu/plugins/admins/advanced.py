@@ -25,13 +25,13 @@ async def FuncDelMessage(c: Client, m: Message, strings):
 async def FuncDelGhost(c: Client, m: Message, strings):
     chat_id = m.chat.id
     users_delete = []
-    users_banned = 0
     msg = await m.reply_text(strings("clean_ghost_process"))
 
     async for i in c.get_chat_members(chat_id):
         if i.user.is_deleted:
             users_delete.append(i.user.id)
-    if len(users_delete) > 0:
+    if users_delete:
+        users_banned = 0
         for deleted_user in users_delete:
             try:
                 await m.chat.ban_member(deleted_user)
