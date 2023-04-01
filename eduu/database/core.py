@@ -5,16 +5,36 @@ from ..config import DATABASE_PATH
 
 logger = logging.getLogger(__name__)
 
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import scoped_session, sessionmaker
 
+DB_URL = "postgres://gtgooiyu:lIIWABTknPYA25HFTgMPKCmnshbUfx2w@kashin.db.elephantsql.com/gtgooiyu"
+
+if DB_URL and DB_URL.startswith("postgres://"):
+    DB_URL = DB_URL.replace("postgres://", "postgresql://", 1)
+    
+    
 class Database:
-    def __init__(self):
-        self.conn: aiosqlite.Connection = None
-        self.path: str = DATABASE_PATH
-        self.is_connected: bool = False
+    def start() -> scoped_session:
+        engine = create_engine(DB_URL, client_encoding="utf8")
+        BASE.metadata.bind = engine
+        BASE.metadata.create_all(engine)
+        return scoped_session(sessionmaker(bind=engine, autoflush=True))
 
-    async def connect(self):
-        # Open the connection
-        conn = await aiosqlite.connect(self.path)
+
+BASE = declarative_base()
+conn = start()
+
+# class Database:
+#     def __init__(self):
+#         self.conn: aiosqlite.Connection = None
+#         self.path: str = DATABASE_PATH
+#         self.is_connected: bool = False
+
+#     async def connect(self):
+#         # Open the connection
+#         conn = await aiosqlite.connect(self.path)
 
         # Define the tables
         await conn.executescript(
