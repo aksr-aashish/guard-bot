@@ -40,9 +40,7 @@ async def prints(c: Client, message: Message, strings):
         return
 
     if res_json:
-        # {"url":"image_url","response_time":"147ms"}
-        image_url = res_json["url"]
-        if image_url:
+        if image_url := res_json["url"]:
             try:
                 await message.reply_photo(image_url)
                 await sent.delete()

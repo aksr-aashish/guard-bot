@@ -47,7 +47,7 @@ async def nekobin(c: Client, m: Message, strings):
 
     if r.text:
         content = str(r.text)
-    elif r.document:
+    else:
         if r.document.file_size > 40000:
             return await msg.edit_text(strings("paste_file_limit"))
         if not pattern.search(r.document.mime_type):

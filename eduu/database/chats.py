@@ -19,7 +19,7 @@ async def add_chat(chat_id, chat_type):
         await conn.execute("INSERT INTO channels (chat_id) values (?)", (chat_id,))
         await conn.commit()
     else:
-        raise TypeError("Unknown chat type '%s'." % chat_type)
+        raise TypeError(f"Unknown chat type '{chat_type}'.")
     return True
 
 
@@ -42,4 +42,4 @@ async def chat_exists(chat_id, chat_type):
         )
         row = await cursor.fetchone()
         return bool(row)
-    raise TypeError("Unknown chat type '%s'." % chat_type)
+    raise TypeError(f"Unknown chat type '{chat_type}'.")

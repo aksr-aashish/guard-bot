@@ -151,7 +151,6 @@ def split_quotes(text: str) -> List:
     else:
         return text.split(None, 1)
 
-        key = remove_escapes(text[1:counter].strip())
     rest = text[counter + 1 :].strip()
     if not key:
         key = text[0] + text[0]
